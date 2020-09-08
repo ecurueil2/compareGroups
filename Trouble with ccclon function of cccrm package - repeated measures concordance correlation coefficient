@@ -1,0 +1,28 @@
+I am R beginner and have a question concerning programming with "R" - ccclon-function from cccrm-package (Concordance Correlation Coefficient for Repeated measures).
+
+I have data from a child study cohort. Some children took part more than one time (only in different years - at different ages). Children always have the same "ID" (see below rind) but "visitnumber" ranges from 1 to 4 (see rtime). In that special case, I would like to compare (for all visits from all probands), the values of two different measuring methods (rmet=method, ry=methodresult) for the same blood parameter. Because I would like to include all follow-up-visits of children (repeat), I chose cccrm-package (repeated measures concordance correlation coefficient).
+
+a<-ccclon(child,
+           ry="methodresult",
+           rind= "ID",
+           rtime="visitnumber",
+           rmet="method",
+           covar=NULL, 
+           rho=0,
+           cl=0.95)
+           
+Thereafter, I recieve the warning: "error in ccclon(child, ry = "methodresult", rind = "ID", rtime = "visitnumber", : Non-positive definite approximate variance-covariance"
+What could I change here?
+
+If I add fixed effects for covar, warnings remain :
+
+... covar="sex",...
+same warning as above
+
+...covar="age",...
+warning: "error in C[, k] <- c(1, contrasts(dades$met)[i, ], contrasts(dades$time)[j, : number of elements to be replaced is not a multiple of replacement length"
+
+...covar="age", "sex",...
+warning: "unused argument ("sex")"
+
+Thank you in advance for any advice!
